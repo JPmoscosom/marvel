@@ -1,7 +1,7 @@
 <template>
   <v-app>
-    <div>
-      <div class="mt-2 mb-8 mx-2" v-for="char in characters" :key="char.id">
+    <div class="d-flex flex-wrap bg-surface-variant justify-space-between">
+      <div class="mt-2 mb-8 mx-10 ma-2" v-for="char in characters" :key="char.id">
         <v-card  max-width="344">
           <v-img :src="char.thumbnail.path + '.jpg'"> </v-img>
 
