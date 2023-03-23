@@ -1,9 +1,9 @@
 <template>
   <v-app>
-    <div class="d-flex flex-wrap bg-surface-variant justify-space-between">
+    <div class="d-flex flex-wrap bg-surface-variant justify-space-between mb-6" >
       <div class="mt-2 mb-8 mx-10 ma-2" v-for="char in characters" :key="char.id">
-        <v-card  max-width="344">
-          <v-img :src="char.thumbnail.path + '.jpg'"> </v-img>
+        <v-card  max-width="344" height="100%">
+          <v-img :src="char.thumbnail.path + '.'+ char.thumbnail.extension"> </v-img>
 
           <v-card-title> {{ char.name }} </v-card-title>
 
@@ -48,11 +48,13 @@ export default {
   },
   created() {
     let url =
-      'http://gateway.marvel.com/v1/public/characters?ts=7&apikey=7e09e88ea35fdcfd907fc60e66efb209&hash=2556b952565b6bd248a714ffc4786cee'
+      'http://gateway.marvel.com/v1/public/characters?ts=7&limit=100&&apikey=7e09e88ea35fdcfd907fc60e66efb209&hash=2556b952565b6bd248a714ffc4786cee'
 
     axios
       .get(url)
       .then((response) => (this.characters = response.data.data.results))
+
+    
   },
 }
 </script>
