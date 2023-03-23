@@ -3,18 +3,18 @@
     <div class="d-flex flex-wrap bg-surface-variant justify-space-between mb-6" >
       <div class="mt-2 mb-8 mx-10 ma-2" v-for="char in characters" :key="char.id">
         <v-card  max-width="344" height="100%">
-          <v-img :src="char.thumbnail.path + '.'+ char.thumbnail.extension"> </v-img>
+          <v-img :src="char.thumbnail.path + '.'+ char.thumbnail.extension" height="60%"> </v-img>
 
           <v-card-title> {{ char.name }} </v-card-title>
 
           <v-card-subtitle> Comics: {{ char.comics.available }} </v-card-subtitle>
 
           <v-card-actions>
-            <v-btn color=red> Explore </v-btn>
+            <v-btn color=red bottom absolute> Explore </v-btn>
 
             <v-spacer></v-spacer>
 
-            <v-btn icon @click="show = !show" outlined>
+            <v-btn icon @click="show = !show" outlined bottom right absolute>
               <v-icon v-if="show">mdi-chevron-up</v-icon>
               <v-icon v-else>mdi-chevron-down</v-icon>
             </v-btn>
