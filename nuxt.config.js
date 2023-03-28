@@ -38,6 +38,8 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
+    '@nuxtjs/google-fonts'
+    
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
@@ -49,6 +51,8 @@ export default {
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
   vuetify: {
     customVariables: ['~/assets/variables.scss'],
+    treeShake: true, // IMPORTANT
+     // Disable the automatic load from online CDN
     theme: {
       dark: true,
       themes: {
@@ -64,7 +68,14 @@ export default {
       },
     },
   },
-
+  googleFonts: {
+    download: true,
+    stylePath: 'css/fonts.css',
+ 
+    families: {
+      AnotherFont: true,
+    }
+  },
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},
 }

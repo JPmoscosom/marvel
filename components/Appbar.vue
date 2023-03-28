@@ -34,7 +34,7 @@
 export default {
   data() {
     return {
-      title: 'Characters',
+      title: 'CHARACTERS',
     }
   },
 }
@@ -43,5 +43,6 @@ export default {
 <style>
 .v-app-bar-title__content {
   width: 200px !important;
+  font-family: 'Bebas Neue';
 }
 </style>

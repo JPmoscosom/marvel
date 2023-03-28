@@ -10,6 +10,7 @@
           <v-img
             :src="char.thumbnail.path + '.' + char.thumbnail.extension"
             height="60%"
+            width="344"
           >
           </v-img>
 
@@ -20,7 +21,7 @@
           </v-card-subtitle>
 
           <v-card-actions>
-            <v-btn color="red" bottom absolute> Explore </v-btn>
+            <v-btn color="#EE171F" bottom absolute> Explore </v-btn>
 
             <v-spacer></v-spacer>
 
@@ -68,3 +69,11 @@ export default {
   },
 }
 </script>
+<style>
+.v-card__title {
+  font-family: 'Bebas Neue';
+}
+.v-card__subtitle {
+  font-family: 'Bebas Neue';
+}
+</style>
