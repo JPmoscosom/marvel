@@ -1,5 +1,6 @@
 <template>
   <v-app>
+    <Appbar />
     <Characters />
   </v-app>
 </template>
