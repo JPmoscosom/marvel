@@ -14,14 +14,14 @@
 
             <v-spacer></v-spacer>
 
-            <v-btn icon @click="show = !show" outlined bottom right absolute>
-              <v-icon v-if="show">mdi-chevron-up</v-icon>
-              <v-icon v-else>mdi-chevron-down</v-icon>
+            <v-btn icon outlined bottom right absolute>
+              <v-icon v-if="selected === null" @click="selected = char.id">mdi-chevron-down</v-icon>
+              <v-icon v-else @click="selected = null">mdi-chevron-up</v-icon>
             </v-btn>
           </v-card-actions>
 
           <v-expand-transition>
-            <div v-show="show">
+            <div v-show="char.id === selected">
               <v-divider></v-divider>
 
               <v-card-text>
@@ -43,7 +43,7 @@ export default {
   data() {
     return {
       characters: [],
-      show: false,
+      selected: null,
     }
   },
   created() {
