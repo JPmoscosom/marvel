@@ -1,9 +1,10 @@
 <template>
   <v-app>
-    
-      <v-container
-        class="d-flex flex-wrap bg-surface-variant mb-6" fixed fill-height
-      >
+    <v-container
+      class="d-flex flex-wrap bg-surface-variant mb-6"
+      fixed
+      fill-height
+    >
       <v-row align="center">
         <v-col
           class="mt-6 mb-7 d-flex justify-center"
@@ -11,7 +12,6 @@
           :key="char.id"
           cols="12"
           md="4"
-          
         >
           <v-card max-width="350" min-height="500" class="d-flex flex-column">
             <v-img
@@ -23,12 +23,19 @@
             </v-img>
 
             <v-row>
-              <v-col cols="12" md="12">
+              <v-col md="auto">
                 <v-card-title> {{ char.name }} </v-card-title>
 
                 <v-card-subtitle>
                   Comics: {{ char.comics.available }}
                 </v-card-subtitle>
+              </v-col>
+              <v-col class="d-flex justify-end mt-3 mr-5">
+                <v-btn icon :index="char.id">
+                  <v-icon v-if="like==false && index !== char.id" @click="like = true; index=char.id">mdi-heart</v-icon>
+                  <v-icon v-else @click="like = false; index=-1" color="#EE171F">mdi-heart</v-icon>
+                  
+                </v-btn>
               </v-col>
             </v-row>
 
@@ -41,29 +48,27 @@
                 </v-card-text>
               </div>
             </v-expand-transition>
-            
-              <v-card-actions>
-                <v-col>
-                  <v-btn color="#EE171F"> Explore </v-btn>
-                </v-col>
-                
-                <v-col class="d-flex justify-end">
-                  <v-btn icon outlined>
-                    <v-icon v-if="selected === null" @click="selected = char.id"
-                      >mdi-chevron-down</v-icon
-                    >
-                    <v-icon v-else @click="selected = null"
-                      >mdi-chevron-up</v-icon
-                    >
-                  </v-btn>
-                </v-col>
-              </v-card-actions>
-            
+
+            <v-card-actions>
+              <v-col>
+                <v-btn color="#EE171F"> Explore </v-btn>
+              </v-col>
+
+              <v-col class="d-flex justify-end">
+                <v-btn icon outlined>
+                  <v-icon v-if="selected === null" @click="selected = char.id"
+                    >mdi-chevron-down</v-icon
+                  >
+                  <v-icon v-else @click="selected = null"
+                    >mdi-chevron-up</v-icon
+                  >
+                </v-btn>
+              </v-col>
+            </v-card-actions>
           </v-card>
         </v-col>
-        </v-row>
-      </v-container>
-    
+      </v-row>
+    </v-container>
   </v-app>
 </template>
 <script>
@@ -76,6 +81,8 @@ export default {
     return {
       characters: [],
       selected: null,
+      like: false,
+      index: -1,
     }
   },
   created() {
@@ -85,7 +92,10 @@ export default {
     axios
       .get(url)
       .then((response) => (this.characters = response.data.data.results))
+    
+    
   },
+
 }
 </script>
 <style>
