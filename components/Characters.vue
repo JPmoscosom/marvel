@@ -2,21 +2,23 @@
   <v-app>
     
       <v-container
-        class="d-flex flex-wrap bg-surface-variant mb-6" fluid fill-height
+        class="d-flex flex-wrap bg-surface-variant mb-6" fixed fill-height
       >
-      <v-row justify="center">
+      <v-row align="center">
         <v-col
-          class="mt-6 mb-7"
+          class="mt-6 mb-7 d-flex justify-center"
           v-for="char in characters"
           :key="char.id"
           cols="12"
           md="4"
+          
         >
-          <v-card max-width="350" height="100%" class="d-flex flex-column">
+          <v-card max-width="350" min-height="500" class="d-flex flex-column">
             <v-img
               :src="char.thumbnail.path + '.' + char.thumbnail.extension"
               height="60%"
               width="350"
+              max-height="300"
             >
             </v-img>
 
@@ -39,13 +41,13 @@
                 </v-card-text>
               </div>
             </v-expand-transition>
-            <v-row>
+            
               <v-card-actions>
                 <v-col>
                   <v-btn color="#EE171F"> Explore </v-btn>
                 </v-col>
-                <v-spacer></v-spacer>
-                <v-col>
+                
+                <v-col class="d-flex justify-end">
                   <v-btn icon outlined>
                     <v-icon v-if="selected === null" @click="selected = char.id"
                       >mdi-chevron-down</v-icon
@@ -56,7 +58,7 @@
                   </v-btn>
                 </v-col>
               </v-card-actions>
-            </v-row>
+            
           </v-card>
         </v-col>
         </v-row>
