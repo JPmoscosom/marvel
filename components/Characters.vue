@@ -1,50 +1,67 @@
 <template>
   <v-app>
-    <div class="d-flex flex-wrap bg-surface-variant justify-space-between mb-6">
-      <div
-        class="mt-6 mb-8 mx-10 ma-2"
-        v-for="char in characters"
-        :key="char.id"
+    
+      <v-container
+        class="d-flex flex-wrap bg-surface-variant mb-6" fluid fill-height
       >
-        <v-card max-width="344" height="100%">
-          <v-img
-            :src="char.thumbnail.path + '.' + char.thumbnail.extension"
-            height="60%"
-            width="344"
-          >
-          </v-img>
+      <v-row justify="center">
+        <v-col
+          class="mt-6 mb-7"
+          v-for="char in characters"
+          :key="char.id"
+          cols="12"
+          md="4"
+        >
+          <v-card max-width="350" height="100%" class="d-flex flex-column">
+            <v-img
+              :src="char.thumbnail.path + '.' + char.thumbnail.extension"
+              height="60%"
+              width="350"
+            >
+            </v-img>
 
-          <v-card-title> {{ char.name }} </v-card-title>
+            <v-row>
+              <v-col cols="12" md="12">
+                <v-card-title> {{ char.name }} </v-card-title>
 
-          <v-card-subtitle>
-            Comics: {{ char.comics.available }}
-          </v-card-subtitle>
+                <v-card-subtitle>
+                  Comics: {{ char.comics.available }}
+                </v-card-subtitle>
+              </v-col>
+            </v-row>
 
-          <v-card-actions>
-            <v-btn color="#EE171F" bottom absolute> Explore </v-btn>
+            <v-expand-transition>
+              <div v-show="char.id === selected">
+                <v-divider></v-divider>
 
-            <v-spacer></v-spacer>
-
-            <v-btn icon outlined bottom right absolute>
-              <v-icon v-if="selected === null" @click="selected = char.id"
-                >mdi-chevron-down</v-icon
-              >
-              <v-icon v-else @click="selected = null">mdi-chevron-up</v-icon>
-            </v-btn>
-          </v-card-actions>
-
-          <v-expand-transition>
-            <div v-show="char.id === selected">
-              <v-divider></v-divider>
-
-              <v-card-text>
-                {{ char.description }}
-              </v-card-text>
-            </div>
-          </v-expand-transition>
-        </v-card>
-      </div>
-    </div>
+                <v-card-text class="wrap-text">
+                  {{ char.description }}
+                </v-card-text>
+              </div>
+            </v-expand-transition>
+            <v-row>
+              <v-card-actions>
+                <v-col>
+                  <v-btn color="#EE171F"> Explore </v-btn>
+                </v-col>
+                <v-spacer></v-spacer>
+                <v-col>
+                  <v-btn icon outlined>
+                    <v-icon v-if="selected === null" @click="selected = char.id"
+                      >mdi-chevron-down</v-icon
+                    >
+                    <v-icon v-else @click="selected = null"
+                      >mdi-chevron-up</v-icon
+                    >
+                  </v-btn>
+                </v-col>
+              </v-card-actions>
+            </v-row>
+          </v-card>
+        </v-col>
+        </v-row>
+      </v-container>
+    
   </v-app>
 </template>
 <script>

@@ -1,5 +1,4 @@
 <template>
-  <app>
     <v-app-bar color="teal-darken-4">
       <template v-slot:prepend>
         <v-app-bar-nav-icon></v-app-bar-nav-icon>
@@ -28,7 +27,6 @@
         <v-icon>mdi-dots-vertical</v-icon>
       </v-btn>
     </v-app-bar>
-  </app>
 </template>
 <script>
 export default {
