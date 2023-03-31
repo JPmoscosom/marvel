@@ -18,7 +18,7 @@
               :src="char.thumbnail.path + '.' + char.thumbnail.extension"
               height="60%"
               width="350"
-              max-height="300"
+              max-height="268"
             >
             </v-img>
 
@@ -51,12 +51,12 @@
 
             <v-card-actions>
               <v-col>
-                <v-btn color="#EE171F"> Explore </v-btn>
+                <v-btn color="#EE171F" @click="$router.push({name:'character', params:{id:char.id}})"> Explore </v-btn>
               </v-col>
 
               <v-col class="d-flex justify-end">
                 <v-btn icon outlined>
-                  <v-icon v-if="selected === null" @click="selected = char.id"
+                  <v-icon v-model="char.selected" v-if="selected === null && selected != char.id" @click="selected = char.id"
                     >mdi-chevron-down</v-icon
                   >
                   <v-icon v-else @click="selected = null"
@@ -83,6 +83,7 @@ export default {
       selected: null,
       like: false,
       index: -1,
+      props: ['id'],
     }
   },
   created() {
@@ -95,14 +96,19 @@ export default {
     
     
   },
+  methods:{
+    goToChar(){
+      
+    }
+  }
 
 }
 </script>
 <style>
 .v-card__title {
-  font-family: 'Bebas Neue';
+  font-family: 'Bebas Neue' !important;
 }
 .v-card__subtitle {
-  font-family: 'Bebas Neue';
+  font-family: 'Bebas Neue' !important;
 }
 </style>
