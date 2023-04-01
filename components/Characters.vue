@@ -43,8 +43,11 @@
               <div v-show="char.id === selected">
                 <v-divider></v-divider>
 
-                <v-card-text class="wrap-text">
+                <v-card-text v-if='char.description !== ""'   class="wrap-text">
                   {{ char.description }}
+                </v-card-text>
+                <v-card-text v-else>
+                  {{ descNotFound }}
                 </v-card-text>
               </div>
             </v-expand-transition>
@@ -84,6 +87,7 @@ export default {
       like: false,
       index: -1,
       props: ['id'],
+      descNotFound: "There is no description provided for this character",
     }
   },
   created() {
