@@ -23,19 +23,19 @@
             </v-img>
 
             <v-row>
-              <v-col md="auto">
+              <v-col cols="12" md="12">
                 <v-card-title> {{ char.name }} </v-card-title>
-
-                <v-card-subtitle>
+                <v-card-text>
+                  <v-divider></v-divider>
+                  <br />
                   Comics: {{ char.comics.available }}
-                </v-card-subtitle>
-              </v-col>
-              <v-col class="d-flex justify-end mt-3 mr-5">
-                <v-btn icon :index="char.id">
-                  <v-icon v-if="like==false && index !== char.id" @click="like = true; index=char.id">mdi-heart</v-icon>
-                  <v-icon v-else @click="like = false; index=-1" color="#EE171F">mdi-heart</v-icon>
-                  
-                </v-btn>
+                  <br />
+                  Series: {{ char.series.available }}
+                  <br />
+                  Stories: {{ char.stories.available }}
+                  <br />
+                  Events: {{ char.events.available }}
+                </v-card-text>
               </v-col>
             </v-row>
 
@@ -43,7 +43,7 @@
               <div v-show="char.id === selected">
                 <v-divider></v-divider>
 
-                <v-card-text v-if='char.description !== ""'   class="wrap-text">
+                <v-card-text v-if="char.description !== ''" class="wrap-text">
                   {{ char.description }}
                 </v-card-text>
                 <v-card-text v-else>
@@ -54,12 +54,22 @@
 
             <v-card-actions>
               <v-col>
-                <v-btn color="#EE171F" @click="$router.push({name:'character', params:{id:char.id}})"> Explore </v-btn>
+                <v-btn
+                  color="#EE171F"
+                  @click="
+                    $router.push({ name: 'character', params: { id: char.id } })
+                  "
+                >
+                  Explore
+                </v-btn>
               </v-col>
 
               <v-col class="d-flex justify-end">
                 <v-btn icon outlined>
-                  <v-icon v-model="char.selected" v-if="selected === null && selected != char.id" @click="selected = char.id"
+                  <v-icon
+                    v-model="char.selected"
+                    v-if="selected === null && selected != char.id"
+                    @click="selected = char.id"
                     >mdi-chevron-down</v-icon
                   >
                   <v-icon v-else @click="selected = null"
@@ -87,25 +97,19 @@ export default {
       like: false,
       index: -1,
       props: ['id'],
-      descNotFound: "There is no description provided for this character",
+      descNotFound: 'There is no description provided for this character',
     }
   },
   created() {
     let url =
       'http://gateway.marvel.com/v1/public/characters?ts=7&limit=100&&apikey=7e09e88ea35fdcfd907fc60e66efb209&hash=2556b952565b6bd248a714ffc4786cee'
-
     axios
       .get(url)
       .then((response) => (this.characters = response.data.data.results))
-    
-    
   },
-  methods:{
-    goToChar(){
-      
-    }
-  }
-
+  methods: {
+    goToChar() {},
+  },
 }
 </script>
 <style>
