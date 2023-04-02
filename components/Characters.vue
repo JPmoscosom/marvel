@@ -119,4 +119,11 @@ export default {
 .v-card__subtitle {
   font-family: 'Bebas Neue' !important;
 }
+.v-card__text  {
+  font-family: 'Bebas Neue' !important;
+}
+.v-btn__content {
+  font-family: 'Bebas Neue' !important;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
 </style>
