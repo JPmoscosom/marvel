@@ -1,5 +1,6 @@
-# marvel
+# Marvel
 
+## IMPORTANTE!!!! Este proyecto usa como package manager Yarn no Npm
 ## Build Setup
 
 ```bash
