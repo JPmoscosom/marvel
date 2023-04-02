@@ -57,7 +57,7 @@
               >
                 <v-card
                   max-width="350"
-                  min-height="530"
+                  height="600"
                   class="d-flex flex-column"
                 >
                   <v-img

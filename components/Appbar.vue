@@ -1,5 +1,5 @@
 <template>
-    <v-app-bar color="teal-darken-4">
+    <v-app-bar color="teal-darken-4" image="https://e0.pxfuel.com/wallpapers/1008/153/desktop-wallpaper-marvel-comics-comic-book-marvel-comics-marvel-black-and-white-comic.jpg">
       <template v-slot:prepend>
         <v-app-bar-nav-icon></v-app-bar-nav-icon>
       </template>
